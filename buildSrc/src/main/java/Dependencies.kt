@@ -1,6 +1,6 @@
 /** PLAYSTORE VERSIONS */
 object Playstore {
-    const val applicationId = "com.joselaine.myapplication.android"
+    const val applicationId = "com.joselaine.kmmnotesapp.android"
     const val compileSdk = 33
     const val minSdk = 24
     const val targetSdk = 33
@@ -9,8 +9,8 @@ object Playstore {
 }
 
 object Namespaces {
-    const val android = "com.joselaine.myapplication.android"
-    const val shared = "com.joselaine.myapplication"
+    const val android = "com.joselaine.kmmnotesapp.android"
+    const val shared = "com.joselaine.kmmnotesapp"
 }
 
 object Plugins {
@@ -76,7 +76,7 @@ object SqlDelight {
     const val driverCommon = "com.squareup.sqldelight:runtime:${Versions.sqlDelight}"
     const val driverAndroid = "com.squareup.sqldelight:android-driver:${Versions.sqlDelight}"
     const val driverIos = "com.squareup.sqldelight:native-driver:${Versions.sqlDelight}"
-    const val databasePackage = "br.com.progdeelite.kmmprogdeelite.database"
+    const val databasePackage = "com.joselaine.kmmnotesapp.database"
     const val databaseScheme = "CommonDatabase"
 }
 

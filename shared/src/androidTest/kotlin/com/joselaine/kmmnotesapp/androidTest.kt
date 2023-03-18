@@ -1,4 +1,4 @@
-package com.joselaine.myapplication
+package com.joselaine.kmmnotesapp
 
 import org.junit.Assert.assertTrue
 import org.junit.Test

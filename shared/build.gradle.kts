@@ -1,11 +1,13 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
+    kotlin(Plugins.multiplatform)
+    id(Plugins.androidLibrary)
+    id(SqlDelight.pluginId)
+    kotlin(Jetbrains.serializationPluginId)
 }
 
 kotlin {
     android()
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -17,13 +19,31 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
-        val commonTest by getting {
+        val commonMain by getting {
             dependencies {
-                implementation(kotlin("test"))
+                implementation(Kotlinx.coroutinesCore)
+                implementation(SqlDelight.driverCommon)
+                implementation(Jetbrains.serializationKotlinCore)
             }
         }
-        val androidMain by getting
+        val commonTest by getting {
+            dependencies {
+                implementation(Kotlinx.coroutinesTest)
+                implementation(kotlin("test"))
+
+                implementation(Test.kotlinCommon)
+                implementation(Test.kotlinAnnotation)
+
+//                implementation(Mockk.common)
+//                implementation(Mockk.core)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                api(Androidx.viewModelLifecycle)
+                implementation(SqlDelight.driverAndroid)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -33,6 +53,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies{
+                implementation(SqlDelight.driverIos)
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
@@ -52,5 +75,11 @@ android {
     defaultConfig {
         minSdk = Playstore.minSdk
         targetSdk = Playstore.targetSdk
+    }
+}
+
+sqldelight{
+    database(SqlDelight.databaseScheme){
+        packageName = SqlDelight.databasePackage
     }
 }

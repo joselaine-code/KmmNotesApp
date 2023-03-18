@@ -1,4 +1,4 @@
-package com.joselaine.myapplication
+package com.joselaine.kmmnotesapp
 
 class Greeting {
     private val platform: Platform = getPlatform()

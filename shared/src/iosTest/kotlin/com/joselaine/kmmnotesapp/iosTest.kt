@@ -1,4 +1,4 @@
-package com.joselaine.myapplication
+package com.joselaine.kmmnotesapp
 
 import kotlin.test.Test
 import kotlin.test.assertTrue
